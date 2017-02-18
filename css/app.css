@@ -1,0 +1,11 @@
+.canvas-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clock
+{
+    border: 1px solid black;
+}
