@@ -15,7 +15,7 @@ function pad(n, width, z) {
 
 // add bit to screen
 function bit(x, y, context, on, color1, color2, rad){
-    var centerX = x * 65 + 50;
+    var centerX = x * 65 + 60;
     var centerY = y * 100 + 50;
     var radius = rad;
 
