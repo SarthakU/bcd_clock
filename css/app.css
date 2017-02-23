@@ -1,11 +1,27 @@
+html, body
+{
+    background: #222;
+    height: 100%;
+}
 .canvas-container
 {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    align-items: center;
+    height: 100%;
 }
 
 #clock
 {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    z-index: 100;
+}
+
+#clock-background
+{
+    /*top: 100px;*/
+    position: absolute;
+    /*background: black;*/
 }

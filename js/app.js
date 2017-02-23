@@ -2,6 +2,9 @@
 var canvas = document.getElementById('clock');
 var ctx = canvas.getContext('2d');
 
+var canvas_bg = document.getElementById('clock-background');
+var ctx_bg = canvas_bg.getContext('2d');
+
 
 // pad leading zeroes
 function pad(n, width, z) {
@@ -11,20 +14,20 @@ function pad(n, width, z) {
 }
 
 // add bit to screen
-function bit(x, y, context, on){
+function bit(x, y, context, on, color1, color2, rad){
     var centerX = x * 65 + 50;
     var centerY = y * 100 + 50;
-    var radius = 10;
+    var radius = rad;
 
     context.beginPath();
     context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
     if (on) 
     {
-        context.fillStyle = 'green';
+        context.fillStyle = color1;
     }
     else
     {
-        context.fillStyle = 'red';
+        context.fillStyle = color2;
     }
     context.fill();
     // context.lineWidth = 5;
@@ -70,12 +73,12 @@ function get_bits()
 
 
 // place time bits on screen
-function place_bits(bitmap)
+function place_bits(bitmap, context, color1, color2,rad)
 {
     for (var i = 0; i < 6; i++){
         for (var j = 0; j < 4; j++){
             // console.log(bitmap[i][j]);
-            bit(i, j, ctx, bitmap[i][j] == '1');
+            bit(i, j, context, bitmap[i][j] == '1', color1, color2, rad);
         }
     }
 }
@@ -84,7 +87,11 @@ function place_bits(bitmap)
 // init
 function init()
 {
-    place_bits(get_bits());
+    
+    var bg_bits = ["0011","1111","0111","1111","0111","1111"]
+    place_bits(bg_bits, ctx_bg, '#AAA', 'transparent', 12);
+    place_bits(get_bits(), ctx, '#0091EA', '#222', 10);
+    // console.log(get_bits())
 }
 
 // init init
